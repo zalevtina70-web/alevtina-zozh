@@ -1,0 +1,4 @@
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+https://openfontlicense.org
+
+The unchanged font retains its embedded copyright and license metadata. Local source: NeuroCombine/проекты/Сборщик документов/assets/fonts/Montserrat.ttf
