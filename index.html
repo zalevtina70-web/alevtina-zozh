@@ -114,7 +114,7 @@
 #экран-1 { --кегль-лид:clamp(22px,1.7vw,25px); }
 @media(min-width:900px){ #экран-1 { --кегль-лид:clamp(28px,2vw,32px); } }
 #экран-1 a.кнопка--главная { border-color:var(--цвет-фон); }
-@font-face { font-family:"Montserrat"; src:url("img/fonts/Montserrat.ttf") format("truetype"); font-style:normal; font-weight:100 900; font-display:swap; }
+@font-face { font-family:"Montserrat"; src:url("img/fonts/Montserrat.woff2") format("woff2"); font-style:normal; font-weight:100 900; font-display:swap; }
 html:root { --шрифт-заголовков:Montserrat,system-ui,sans-serif; --шрифт-текста:Montserrat,system-ui,sans-serif; }
 body.главная-секции-на-виду .липкая-кнопка { opacity:0; visibility:hidden; pointer-events:none; }/* Узкая шапка: обе строки остаются читаемыми без уменьшения шрифта. */
 @media(max-width:699px){
@@ -125,14 +125,25 @@ body.главная-секции-на-виду .липкая-кнопка { opac
 }@media(max-width:699px){
  #экран-1 .кикер { max-width:100%; white-space:normal; line-height:1.35; }
  #экран-1 .кикер .иконка { flex-shrink:0; }
-}</style>
+}
+/* Проверка 20.10.2026: надпись читается поверх фото; на коротком
+   вертикальном телефоне кнопка остаётся в первом окне без уменьшения текста. */
+#экран-1 .шапка__лиц { color:#3D4A3D; background:#F5F1EA; border-radius:6px; padding:4px 6px; font-weight:600; }
+#экран-1 .шапка__лиц .иконка { color:#3D4A3D; }
+@media(max-width:899px) and (max-height:600px) and (orientation:portrait) {
+ #экран-1 .первый-экран__текст { padding-top:max(0px, calc(min(35vh, var(--отступ-секции) * 5.3) - 36px)); }
+}
+@media(max-width:350px) and (max-height:650px) and (orientation:portrait) {
+ #экран-1 .первый-экран__текст { padding-top:max(0px, calc(min(35vh, var(--отступ-секции) * 5.3) - 100px)); }
+}
+</style>
   <header class="шапка">
     <a class="шапка__лого" href="#">Алевтина — консультант по ЗОЖ</a>
     <span class="шапка__лиц"><svg class="иконка" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
   <path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6L12 3z"/>
 </svg><span><span class="полн">10 лет в теме питания и ЗОЖ</span><span class="кратко">10+ лет в питании</span></span></span>
   </header>
-  <figure class="картинка картинка--сцена первый-экран__картинка"><picture><source media="(max-width: 899px)" srcset="img/alevtina-hero-palette-v2.webp"><img src="img/alevtina-hero-palette-v2.webp" alt="Портрет Алевтины" data-лицо="50,24" fetchpriority="high"></picture></figure>
+  <figure class="картинка картинка--сцена первый-экран__картинка"><picture><source media="(max-width: 899px)" srcset="img/alevtina-hero-palette-v2-q82.webp"><img src="img/alevtina-hero-palette-v2-q82.webp" width="928" height="1152" alt="Портрет Алевтины" data-лицо="50,24" fetchpriority="high"></picture></figure>
   <div class="блок__внутри">
     <div class="первый-экран__текст">
       <p class="кикер"><svg class="иконка" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

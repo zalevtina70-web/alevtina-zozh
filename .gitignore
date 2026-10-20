@@ -1,3 +1,6 @@
 /img/*.webp
-!/img/alevtina-hero-palette-v2.webp
+!/img/alevtina-hero-palette-v2-q82.webp
 !/img/alevtina-3x4.webp
+/img/fonts/*
+!/img/fonts/Montserrat.woff2
+!/img/fonts/LICENSE-Montserrat.txt

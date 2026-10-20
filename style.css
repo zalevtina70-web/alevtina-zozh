@@ -1860,7 +1860,8 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
 #экран-10 .секция__лид { font-size:var(--кегль-лид); font-weight:600; line-height:1.45; }
 @media(min-width:900px){ #экран-10 .секция__лид { font-size:var(--кегль-лид); } }
 #экран-10 .кнопка--главная { --кегль-текст:clamp(16px,1.2vw,18px); --цвет-кнопки:var(--цвет-текст); --цвет-на-кнопке:var(--цвет-фон); --цвет-кнопки-навёл:var(--цвет-тёмный-фон-2); --заливка:var(--цвет-текст); --свет-кнопки:var(--цвет-фон); --объём:0 4px 14px color-mix(in srgb,var(--цвет-текст) 35%,transparent); background:var(--цвет-текст); color:var(--цвет-фон); border:1px solid var(--цвет-фон); border-radius:var(--кнопка-радиус); font-size:var(--кегль-текст); font-weight:600; line-height:1.2; }
-#экран-10 .кнопка--главная:hover { background:var(--цвет-тёмный-фон-2); color:var(--цвет-фон); }
+#экран-10 .кнопка--главная { --заливка:var(--цвет-фон); --цвет-кнопки:var(--цвет-фон); --цвет-на-кнопке:var(--цвет-текст); --свет-кнопки:var(--цвет-фон-карточки); background:var(--цвет-фон); color:var(--цвет-текст); border-color:var(--цвет-фон); }
+#экран-10 .кнопка--главная:hover { --заливка:var(--цвет-тёплый); background:var(--цвет-тёплый); color:var(--цвет-текст); }
 #экран-10 .кнопка--главная::before { background:linear-gradient(180deg,color-mix(in srgb,var(--свет-кнопки) 10%,transparent),transparent 50%,color-mix(in srgb,var(--цвет-тёмный-фон) 22%,transparent)); }
 
 #экран-10 { --кегль-лид:clamp(22px,1.7vw,25px); }
