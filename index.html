@@ -130,11 +130,15 @@ body.главная-секции-на-виду .липкая-кнопка { opac
    вертикальном телефоне кнопка остаётся в первом окне без уменьшения текста. */
 #экран-1 .шапка__лиц { color:#3D4A3D; background:#F5F1EA; border-radius:6px; padding:4px 6px; font-weight:600; }
 #экран-1 .шапка__лиц .иконка { color:#3D4A3D; }
+/* Резервная прежняя раскладка для браузера без JavaScript. */
 @media(max-width:899px) and (max-height:600px) and (orientation:portrait) {
  #экран-1 .первый-экран__текст { padding-top:max(0px, calc(min(35vh, var(--отступ-секции) * 5.3) - 36px)); }
 }
 @media(max-width:350px) and (max-height:650px) and (orientation:portrait) {
  #экран-1 .первый-экран__текст { padding-top:max(0px, calc(min(35vh, var(--отступ-секции) * 5.3) - 100px)); }
+}
+@media(max-width:899px) and (orientation:portrait) {
+ #экран-1.подстройка-кнопки .первый-экран__текст { padding-top:max(0px, calc(min(35vh, var(--отступ-секции) * 5.3) - var(--подъём-кнопки, 0px))); }
 }
 </style>
   <header class="шапка">
@@ -157,6 +161,41 @@ body.главная-секции-на-виду .липкая-кнопка { opac
 <script>
 /* Рабочее поведение: общая панель не дублирует ни одну видимую основную кнопку. */
 document.addEventListener('DOMContentLoaded', function () {
+  /* Панели мобильного браузера меняют видимую высоту независимо от модели
+     телефона. Убираем только лишнее место перед текстом; шрифт не уменьшаем. */
+  var hero = document.getElementById('экран-1');
+  var text = hero.querySelector('.первый-экран__текст');
+  var firstButton = text.querySelector('.кнопка--главная');
+  hero.classList.add('подстройка-кнопки');
+  var frame = 0;
+  function fitFirstButton() {
+    frame = 0;
+    /* При чтении не меняем высоту уже пройденной обложки. */
+    if (window.scrollY > 1) return;
+    if (!firstButton || window.innerWidth >= 900 || window.innerHeight < 480 ||
+        !window.matchMedia('(orientation:portrait)').matches) {
+      hero.style.removeProperty('--подъём-кнопки');
+      return;
+    }
+    var lift = parseFloat(hero.style.getPropertyValue('--подъём-кнопки')) || 0;
+    var padding = parseFloat(getComputedStyle(text).paddingTop) || 0;
+    var visibleHeight = Math.min(window.innerHeight,
+      window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    var naturalBottom = firstButton.getBoundingClientRect().bottom + window.scrollY + lift;
+    var next = Math.min(padding + lift, Math.max(0, naturalBottom - visibleHeight + 24));
+    if (Math.abs(next - lift) > .5) hero.style.setProperty('--подъём-кнопки', next + 'px');
+  }
+  function scheduleFit() {
+    if (!frame) frame = requestAnimationFrame(fitFirstButton);
+  }
+  window.addEventListener('resize', scheduleFit);
+  window.addEventListener('scroll', function () {
+    if (window.scrollY <= 1) scheduleFit();
+  }, {passive:true});
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', scheduleFit);
+  if (window.ResizeObserver) new ResizeObserver(scheduleFit).observe(text);
+  if (document.fonts) document.fonts.ready.then(scheduleFit);
+  scheduleFit();
   if (!window.IntersectionObserver) return;
   var buttons = Array.from(document.querySelectorAll('section .кнопка--главная'));
   var visible = new Set();
