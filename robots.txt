@@ -1,2 +1,3 @@
 User-agent: *
-Disallow: /
+Allow: /
+Sitemap: https://zalevtina70-web.github.io/alevtina-zozh/sitemap.xml
