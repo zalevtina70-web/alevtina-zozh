@@ -1866,16 +1866,3 @@ h2 .хвост-акцент { display: block; font-weight: 600; font-size: .6em;
 
 #экран-10 { --кегль-лид:clamp(22px,1.7vw,25px); }
 @media(min-width:900px){ #экран-10 { --кегль-лид:clamp(28px,2vw,32px); } }
-
-/* экран 11 */
-#экран-11 { background:var(--цвет-фон); color:var(--цвет-текст); padding-block:48px; }
-#экран-11 .подвал__сетка { display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
-#экран-11 .подвал__лого { display:block; font-size:var(--кегль-лид); font-weight:600; line-height:1.4; }
-#экран-11 h2 { font-size:var(--кегль-лид); line-height:1.4; margin:0 0 16px; }
-#экран-11 p, #экран-11 a { font-size:var(--кегль-текст); line-height:1.6; }
-#экран-11 p { margin:12px 0 0; }
-#экран-11 .подвал__ссылки { display:flex; flex-direction:column; gap:12px; }
-#экран-11 a { color:var(--цвет-текст); overflow-wrap:anywhere; text-underline-offset:4px; }
-#экран-11 a:focus-visible { outline:3px solid currentColor; outline-offset:4px; }
-#экран-11 .подвал__низ { border-top:1px solid var(--цвет-текст-мягкий); margin-top:32px; padding-top:20px; font-size:var(--кегль-текст); }
-@media(max-width:899px) { #экран-11 .подвал__сетка { grid-template-columns:1fr; } }
